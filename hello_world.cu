@@ -130,7 +130,8 @@ void algo_cudastf_gpu(void *descr[], void *arg)
     double *z = (double *)STARPU_VECTOR_GET_PTR(descr[2]);
 
 
-    context ctx = stream_ctx(stream, *async_handle);
+//    context ctx = stream_ctx(stream, *async_handle);
+    context ctx = graph_ctx(stream, *async_handle);
 
     auto lX = ctx.logical_data(make_slice(x, n), data_place::current_device());
     auto lY = ctx.logical_data(make_slice(y, n), data_place::current_device());
